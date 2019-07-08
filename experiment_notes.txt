@@ -1,0 +1,23 @@
+Experiment set up
+
+# Goal Evaluating distance metrics to evaluate paraphrase detection
+Test against traiin set for paraphrases
+
+Test harness
+	Baseline: cosine similarity w/ threshold of .85
+	Infersent:
+		variables: vocab size (top 1000, 10000, 50000)
+				   corpus vocab
+				   lemmatize input
+		- cosine sim w/ threshold of .85
+		- euclidean dist?
+
+Evaluation
+	- F1 and accuracy
+
+Experiments:
+Preprocessing 
+	- L1 norm 
+	- L2 norm
+
+

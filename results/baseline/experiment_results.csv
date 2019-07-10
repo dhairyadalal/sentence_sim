@@ -1,0 +1,11 @@
+Experiment Name,dataset,params,f1_score,accuracy
+exp1,kgap,None,1.0,1.0
+exp2,kgap,None,1.0,1.0
+exp3,kgap,None,1.0,1.0
+exp4,kgap,None,1.0,1.0
+exp5,kgap,None,1.0,1.0
+exp6,kgap,None,1.0,1.0
+exp2,kgap,None,1.0,1.0
+exp3,kgap,None,1.0,1.0
+exp4,kgap,None,1.0,1.0
+exp5,kgap,None,1.0,1.0

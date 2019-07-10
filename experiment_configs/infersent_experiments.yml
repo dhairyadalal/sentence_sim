@@ -1,0 +1,93 @@
+experiments:
+  - name: "exp1"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 1000
+      embedding_type: "glove"
+      use_train_sents: false
+
+  - name: "exp2"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 10000
+      embedding_type: "glove"
+      use_train_sents: false
+
+  - name: "exp3"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 100000
+      embedding_type: "glove"
+      use_train_sents: false
+
+  - name: "exp4"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 500000
+      embedding_type: "glove"
+      use_train_sents: false
+
+  - name: "exp5"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 1000
+      embedding_type: "glove"
+      use_train_sents: true
+      train_sent_loc: "data/kgap/train_sents.txt"
+
+  - name: "exp6"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 1000
+      embedding_type: "fasttext"
+      use_train_sents: false
+
+  - name: "exp2"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 10000
+      embedding_type: "fasttext"
+      use_train_sents: false
+
+  - name: "exp3"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 100000
+      embedding_type: "fasttext"
+      use_train_sents: false
+
+  - name: "exp4"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 500000
+      embedding_type: "fasttext"
+      use_train_sents: false
+
+  - name: "exp5"
+    dataset: "kgap"
+    model: "models.infersent.InferSentModel"
+    output_loc: "results/infersent"
+    params:
+      vocab_size: 1000
+      embedding_type: "fasttext"
+      use_train_sents: true
+      train_sent_loc: "data/kgap/train_sents.txt"
+

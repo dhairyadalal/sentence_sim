@@ -1,0 +1,13 @@
+Experiment Name,dataset,params,f1_score,accuracy
+cosine baseline,msr-paraphrase,None,0.178,0.397
+cosine baseline,kgap,None,0.176,0.546
+exp1,kgap,None,0.247,0.566
+exp2,kgap,None,0.213,0.558
+exp3,kgap,None,0.213,0.558
+exp4,kgap,None,0.213,0.558
+exp5,kgap,None,0.208,0.556
+exp6,kgap,None,0.258,0.626
+exp2,kgap,None,0.185,0.567
+exp3,kgap,None,0.167,0.544
+exp4,kgap,None,0.163,0.542
+exp5,kgap,None,0.163,0.542

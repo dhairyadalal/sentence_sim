@@ -26,23 +26,32 @@ class ExperimentRun(object):
                  name: str,
                  dataset_name: str,
                  model: ModelInterface,
+                 labels: List[int] = None,
                  params: dict = None):
         self.name = name
         self.dataset_name = dataset_name
         self.model = model
         self.params = params
+        self.labels = labels
         self.predictions = list()
         self.accuracy = 0.0
         self.f1_score = 0.0
 
     def generate_predictions(self, data: List[Example]):
-        for example in tqdm(data):
-            self.predictions.append(self.model.predict(example.text1,
-                                                       example.text2)[0])
+        for i, example in tqdm(enumerate(data)):
+            try:
+                pred = self.model.predict(example.text1, example.text2)[0]
+                label = self.labels[i]
+                self.predictions.append([pred, label])
+            except:
+                pass
 
-    def evaluate_predictions(self, gold_labels: List[int]):
-        self.accuracy = accuracy_score(gold_labels, self.predictions)
-        self.f1_score = f1_score(gold_labels, self.predictions)
+    def evaluate_predictions(self):
+        preds = [tup[0] for tup in self.predictions]
+        labels = [tup[1] for tup in self.predictions]
+
+        self.accuracy = accuracy_score(labels, preds)
+        self.f1_score = f1_score(labels, preds)
 
 
 def main():
@@ -66,9 +75,10 @@ def main():
         model = BaselineModel()
         msr_base = ExperimentRun(name="cosine baseline",
                                  dataset_name="msr-paraphrase",
+                                 labels = msr_data.gold_labels,
                                  model=model)
         msr_base.generate_predictions(msr_data.data)
-        msr_base.evaluate_predictions(msr_data.gold_labels)
+        msr_base.evaluate_predictions()
         experiment_results.append(msr_base)
         print(f"msr: accuracy-{msr_base.accuracy}, f1-score-{msr_base.f1_score}")
 
@@ -76,9 +86,10 @@ def main():
         print("running experiments against kgap")
         kgap_base = ExperimentRun(name="cosine baseline",
                                   dataset_name="kgap",
+                                  labels = kgap_data.gold_labels,
                                   model=model)
         kgap_base.generate_predictions(kgap_data.data)
-        kgap_base.evaluate_predictions(kgap_data.gold_labels)
+        kgap_base.evaluate_predictions()
         experiment_results.append(kgap_base)
         print(f"kgap: accuracy-{kgap_base.accuracy}, f1-score-{kgap_base.f1_score}")
 
@@ -100,8 +111,10 @@ def main():
             gold_labels = msr_data.gold_labels if exp["dataset"] == "msr-paraphrase" \
                 else kgap_data.gold_labels
 
+            experiment.labels = gold_labels
+
             experiment.generate_predictions(data)
-            experiment.evaluate_predictions(gold_labels)
+            experiment.evaluate_predictions()
 
             experiment_results.append(experiment)
         except:

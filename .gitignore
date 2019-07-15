@@ -2,3 +2,5 @@ InferSent/
 data/
 dataset-sts/
 models/infersent
+*.pkl
+*.csv
